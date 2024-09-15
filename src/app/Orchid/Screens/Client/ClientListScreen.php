@@ -2,12 +2,17 @@
 
 namespace App\Orchid\Screens\Client;
 
+use App\Http\Requests\ClientRequest;
 use App\Models\Client;
+use App\Models\Service;
 use App\Orchid\Layouts\Client\ClientListTable;
 
+use Illuminate\Http\Request;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\DateTimer;
+use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
@@ -67,21 +72,33 @@ class ClientListScreen extends Screen
     {
         return [
             ClientListTable::class,
-//            Layout::modal('createClient', Layout::rows([
-//                Input::make('phone')->required()->title('Телефон'),
-//                Input::make('name')->required()->title('Имя'),
-//                Input::make('last_name')->title('Фамилия'),
-//                Input::make('email')->type('email')->title('E-mail'),
-//                DateTimer::make('birthday')->format('Y-m-d')->title('Дата рождения')
-//            ]))
-//                ->title('Создать клиента')
-//                ->applyButton('Создать')
-//                ->closeButton('Отмена')
+            Layout::modal('createClient', Layout::rows([
+                Group::make([
+                    Input::make('name')->required()->title('Имя'),
+                    Input::make('last_name')->title('Фамилия'),
+                ]),
+                Input::make('phone')->required()->title('Телефон')->mask('+7(999)-999-99-99'),
+                Input::make('email')->type('email')->title('E-mail'),
+                DateTimer::make('birthday')->format('Y-m-d')->title('Дата рождения'),
+                Relation::make('service_id')->fromModel(Service::class, 'name')->title('Услуга')
+            ]))
+                ->title('Создать клиента')
+                ->applyButton('Создать')
+                ->closeButton('Отмена')
         ];
     }
 
-    public function create()
+    /**
+     * @param ClientRequest $request
+     * @return void
+     */
+    public function create(ClientRequest $request)
     {
+
+        Client::create(array_merge(
+            $request->validated(), [
+            'status' => 'interviewed'
+        ]));
         Toast::info("Клиент успешно создан");
     }
 }
