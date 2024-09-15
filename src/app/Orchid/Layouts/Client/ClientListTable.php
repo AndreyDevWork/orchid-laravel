@@ -3,6 +3,7 @@
 namespace App\Orchid\Layouts\Client;
 
 use App\Models\Client;
+use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 
@@ -26,6 +27,7 @@ class ClientListTable extends Table
     protected function columns(): iterable
     {
         return [
+            TD::make('name', 'Имя'),
             TD::make('phone', 'Телефон')
                 ->width(150)
                 ->cantHide()
@@ -44,7 +46,16 @@ class ClientListTable extends Table
             TD::make('updated_at', 'Дата обновления')
                 ->defaultHidden(),
             TD::make('created_at', 'Дата создания')
-                ->defaultHidden()
+                ->defaultHidden(),
+            TD::make('action')->render(function (Client $client) {
+                return ModalToggle::make('Редактировать')
+                    ->modal('editClient')
+                    ->method('createOrUpdateClient')
+                    ->modalTitle('Редактировать клиента ' . $client->phone)
+                    ->asyncParameters([
+                        'client' => $client->id
+                    ]);
+            })
         ];
     }
 }

@@ -7,12 +7,14 @@ use App\Models\Client;
 use App\Models\Service;
 use App\Orchid\Layouts\Client\ClientListTable;
 
+use App\Orchid\Layouts\Client\CreateOrUpdateClient;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Relation;
+use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
@@ -59,7 +61,7 @@ class ClientListScreen extends Screen
         return [
             ModalToggle::make('Создать клиента')
                 ->modal('createClient')
-                ->method('create')
+                ->method('createOrUpdateClient'),
         ];
     }
 
@@ -72,19 +74,22 @@ class ClientListScreen extends Screen
     {
         return [
             ClientListTable::class,
-            Layout::modal('createClient', Layout::rows([
-                Group::make([
-                    Input::make('name')->required()->title('Имя'),
-                    Input::make('last_name')->title('Фамилия'),
-                ]),
-                Input::make('phone')->required()->title('Телефон')->mask('+7(999)-999-99-99'),
-                Input::make('email')->type('email')->title('E-mail'),
-                DateTimer::make('birthday')->format('Y-m-d')->title('Дата рождения'),
-                Relation::make('service_id')->fromModel(Service::class, 'name')->title('Услуга')
-            ]))
+            Layout::modal('createClient', CreateOrUpdateClient::class)
                 ->title('Создать клиента')
                 ->applyButton('Создать')
-                ->closeButton('Отмена')
+                ->closeButton('Отмена'),
+            Layout::modal('editClient', CreateOrUpdateClient::class)->async('asyncGetClient')
+        ];
+    }
+
+    /**
+     * @param Client $client
+     * @return Client[]
+     */
+    public function asyncGetClient(Client $client): array
+    {
+        return [
+            'client' => $client
         ];
     }
 
@@ -92,13 +97,15 @@ class ClientListScreen extends Screen
      * @param ClientRequest $request
      * @return void
      */
-    public function create(ClientRequest $request)
+    public function createOrUpdateClient(ClientRequest $request): void
     {
-
-        Client::create(array_merge(
-            $request->validated(), [
+        $clientId = $request->input('client.id');
+        Client::updateOrCreate([
+            'id' => $clientId
+        ], array_merge($request->validated()['client'], [
             'status' => 'interviewed'
-        ]));
-        Toast::info("Клиент успешно создан");
+        ]) );
+
+        is_null($clientId) ? Toast::info("Клиент успешно создан") : Toast::info('Клиент успешно обновлен');
     }
 }
