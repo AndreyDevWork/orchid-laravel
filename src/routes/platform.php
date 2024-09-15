@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Orchid\Screens\ClientListScreen;
+use App\Orchid\Screens\Client\ClientListScreen;
 use App\Orchid\Screens\Examples\ExampleActionsScreen;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
 use App\Orchid\Screens\Examples\ExampleChartsScreen;
