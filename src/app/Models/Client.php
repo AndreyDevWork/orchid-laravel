@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Orchid\Attachment\Attachable;
 use Orchid\Attachment\Models\Attachment;
 use Orchid\Filters\Filterable;
+use Orchid\Filters\Types\Where;
 use Orchid\Metrics\Chartable;
 use Orchid\Screen\AsSource;
 
@@ -23,7 +24,7 @@ class Client extends Model
         'status'
     ];
     protected $allowedFilters = [
-        'phone'
+        'phone' => Where::class
     ];
 
     public const STATUS = [

@@ -112,6 +112,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'giggsey/libphonenumber-for-php-lite' => array(
+            'pretty_version' => '8.13.45',
+            'version' => '8.13.45.0',
+            'reference' => '4fe78c7d51e6ea49a7f286bfcc2f6aa6130088d1',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../giggsey/libphonenumber-for-php-lite',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'graham-campbell/result-type' => array(
             'pretty_version' => 'v1.1.3',
             'version' => '1.1.3.0',
@@ -678,6 +687,15 @@
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'propaganistas/laravel-phone' => array(
+            'pretty_version' => '5.3.2',
+            'version' => '5.3.2.0',
+            'reference' => '44efd6edc181616c49f895fff97ad1cc0f3fecb2',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../propaganistas/laravel-phone',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'psr/clock' => array(
             'pretty_version' => '1.0.0',

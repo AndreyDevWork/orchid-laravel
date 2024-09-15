@@ -22,7 +22,7 @@ class ClientListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'clients' => Client::paginate(5)
+            'clients' => Client::filters()->defaultSort('status', 'asc')->paginate(10)
         ];
     }
 
@@ -67,16 +67,16 @@ class ClientListScreen extends Screen
     {
         return [
             ClientListTable::class,
-            Layout::modal('createClient', Layout::rows([
-                Input::make('phone')->required()->title('Телефон'),
-                Input::make('name')->required()->title('Имя'),
-                Input::make('last_name')->title('Фамилия'),
-                Input::make('email')->type('email')->title('E-mail'),
-                DateTimer::make('birthday')->format('Y-m-d')->title('Дата рождения')
-            ]))
-                ->title('Создать клиента')
-                ->applyButton('Создать')
-                ->closeButton('Отмена')
+//            Layout::modal('createClient', Layout::rows([
+//                Input::make('phone')->required()->title('Телефон'),
+//                Input::make('name')->required()->title('Имя'),
+//                Input::make('last_name')->title('Фамилия'),
+//                Input::make('email')->type('email')->title('E-mail'),
+//                DateTimer::make('birthday')->format('Y-m-d')->title('Дата рождения')
+//            ]))
+//                ->title('Создать клиента')
+//                ->applyButton('Создать')
+//                ->closeButton('Отмена')
         ];
     }
 

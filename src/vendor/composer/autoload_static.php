@@ -39,12 +39,17 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'a1cfe24d14977df6878b9bf804af2d1c' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Phpunit/Autoload.php',
         'fd4bcb0bca65a7921baebcc77d3f2daf' => __DIR__ . '/..' . '/orchid/platform/src/Support/helpers.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
+        '017b24472353920ed42bb364f7653c43' => __DIR__ . '/..' . '/propaganistas/laravel-phone/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         'v' => 
         array (
             'voku\\' => 5,
+        ),
+        'l' => 
+        array (
+            'libphonenumber\\' => 15,
         ),
         'W' => 
         array (
@@ -105,6 +110,7 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
             'Psr\\EventDispatcher\\' => 20,
             'Psr\\Container\\' => 14,
             'Psr\\Clock\\' => 10,
+            'Propaganistas\\LaravelPhone\\' => 27,
             'PhpParser\\' => 10,
             'PhpOption\\' => 10,
         ),
@@ -194,6 +200,10 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'voku\\' => 
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+        ),
+        'libphonenumber\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src',
         ),
         'Whoops\\' => 
         array (
@@ -375,6 +385,10 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'Psr\\Clock\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/clock/src',
+        ),
+        'Propaganistas\\LaravelPhone\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/propaganistas/laravel-phone/src',
         ),
         'PhpParser\\' => 
         array (
@@ -569,7 +583,44 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
 
     public static $classMap = array (
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Models\\Client' => __DIR__ . '/../..' . '/app/Models/Client.php',
+        'App\\Models\\Service' => __DIR__ . '/../..' . '/app/Models/Service.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Orchid\\Filters\\RoleFilter' => __DIR__ . '/../..' . '/app/Orchid/Filters/RoleFilter.php',
+        'App\\Orchid\\Layouts\\Client\\ClientListTable' => __DIR__ . '/../..' . '/app/Orchid/Layouts/Client/ClientListTable.php',
+        'App\\Orchid\\Layouts\\Examples\\ChartBarExample' => __DIR__ . '/../..' . '/app/Orchid/Layouts/Examples/ChartBarExample.php',
+        'App\\Orchid\\Layouts\\Examples\\ChartLineExample' => __DIR__ . '/../..' . '/app/Orchid/Layouts/Examples/ChartLineExample.php',
+        'App\\Orchid\\Layouts\\Examples\\ChartPercentageExample' => __DIR__ . '/../..' . '/app/Orchid/Layouts/Examples/ChartPercentageExample.php',
+        'App\\Orchid\\Layouts\\Examples\\ChartPieExample' => __DIR__ . '/../..' . '/app/Orchid/Layouts/Examples/ChartPieExample.php',
+        'App\\Orchid\\Layouts\\Examples\\ExampleElements' => __DIR__ . '/../..' . '/app/Orchid/Layouts/Examples/ExampleElements.php',
+        'App\\Orchid\\Layouts\\Examples\\TabMenuExample' => __DIR__ . '/../..' . '/app/Orchid/Layouts/Examples/TabMenuExample.php',
+        'App\\Orchid\\Layouts\\Role\\RoleEditLayout' => __DIR__ . '/../..' . '/app/Orchid/Layouts/Role/RoleEditLayout.php',
+        'App\\Orchid\\Layouts\\Role\\RoleListLayout' => __DIR__ . '/../..' . '/app/Orchid/Layouts/Role/RoleListLayout.php',
+        'App\\Orchid\\Layouts\\Role\\RolePermissionLayout' => __DIR__ . '/../..' . '/app/Orchid/Layouts/Role/RolePermissionLayout.php',
+        'App\\Orchid\\Layouts\\User\\ProfilePasswordLayout' => __DIR__ . '/../..' . '/app/Orchid/Layouts/User/ProfilePasswordLayout.php',
+        'App\\Orchid\\Layouts\\User\\UserEditLayout' => __DIR__ . '/../..' . '/app/Orchid/Layouts/User/UserEditLayout.php',
+        'App\\Orchid\\Layouts\\User\\UserFiltersLayout' => __DIR__ . '/../..' . '/app/Orchid/Layouts/User/UserFiltersLayout.php',
+        'App\\Orchid\\Layouts\\User\\UserListLayout' => __DIR__ . '/../..' . '/app/Orchid/Layouts/User/UserListLayout.php',
+        'App\\Orchid\\Layouts\\User\\UserPasswordLayout' => __DIR__ . '/../..' . '/app/Orchid/Layouts/User/UserPasswordLayout.php',
+        'App\\Orchid\\Layouts\\User\\UserRoleLayout' => __DIR__ . '/../..' . '/app/Orchid/Layouts/User/UserRoleLayout.php',
+        'App\\Orchid\\PlatformProvider' => __DIR__ . '/../..' . '/app/Orchid/PlatformProvider.php',
+        'App\\Orchid\\Presenters\\UserPresenter' => __DIR__ . '/../..' . '/app/Orchid/Presenters/UserPresenter.php',
+        'App\\Orchid\\Screens\\Client\\ClientListScreen' => __DIR__ . '/../..' . '/app/Orchid/Screens/Client/ClientListScreen.php',
+        'App\\Orchid\\Screens\\Examples\\ExampleActionsScreen' => __DIR__ . '/../..' . '/app/Orchid/Screens/Examples/ExampleActionsScreen.php',
+        'App\\Orchid\\Screens\\Examples\\ExampleCardsScreen' => __DIR__ . '/../..' . '/app/Orchid/Screens/Examples/ExampleCardsScreen.php',
+        'App\\Orchid\\Screens\\Examples\\ExampleChartsScreen' => __DIR__ . '/../..' . '/app/Orchid/Screens/Examples/ExampleChartsScreen.php',
+        'App\\Orchid\\Screens\\Examples\\ExampleFieldsAdvancedScreen' => __DIR__ . '/../..' . '/app/Orchid/Screens/Examples/ExampleFieldsAdvancedScreen.php',
+        'App\\Orchid\\Screens\\Examples\\ExampleFieldsScreen' => __DIR__ . '/../..' . '/app/Orchid/Screens/Examples/ExampleFieldsScreen.php',
+        'App\\Orchid\\Screens\\Examples\\ExampleGridScreen' => __DIR__ . '/../..' . '/app/Orchid/Screens/Examples/ExampleGridScreen.php',
+        'App\\Orchid\\Screens\\Examples\\ExampleLayoutsScreen' => __DIR__ . '/../..' . '/app/Orchid/Screens/Examples/ExampleLayoutsScreen.php',
+        'App\\Orchid\\Screens\\Examples\\ExampleScreen' => __DIR__ . '/../..' . '/app/Orchid/Screens/Examples/ExampleScreen.php',
+        'App\\Orchid\\Screens\\Examples\\ExampleTextEditorsScreen' => __DIR__ . '/../..' . '/app/Orchid/Screens/Examples/ExampleTextEditorsScreen.php',
+        'App\\Orchid\\Screens\\PlatformScreen' => __DIR__ . '/../..' . '/app/Orchid/Screens/PlatformScreen.php',
+        'App\\Orchid\\Screens\\Role\\RoleEditScreen' => __DIR__ . '/../..' . '/app/Orchid/Screens/Role/RoleEditScreen.php',
+        'App\\Orchid\\Screens\\Role\\RoleListScreen' => __DIR__ . '/../..' . '/app/Orchid/Screens/Role/RoleListScreen.php',
+        'App\\Orchid\\Screens\\User\\UserEditScreen' => __DIR__ . '/../..' . '/app/Orchid/Screens/User/UserEditScreen.php',
+        'App\\Orchid\\Screens\\User\\UserListScreen' => __DIR__ . '/../..' . '/app/Orchid/Screens/User/UserListScreen.php',
+        'App\\Orchid\\Screens\\User\\UserProfileScreen' => __DIR__ . '/../..' . '/app/Orchid/Screens/User/UserProfileScreen.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
@@ -5091,6 +5142,19 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'PhpParser\\PrettyPrinter\\Standard' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/PrettyPrinter/Standard.php',
         'PhpParser\\Token' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Token.php',
         'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
+        'Propaganistas\\LaravelPhone\\Casts\\E164PhoneNumberCast' => __DIR__ . '/..' . '/propaganistas/laravel-phone/src/Casts/E164PhoneNumberCast.php',
+        'Propaganistas\\LaravelPhone\\Casts\\PhoneNumberCast' => __DIR__ . '/..' . '/propaganistas/laravel-phone/src/Casts/PhoneNumberCast.php',
+        'Propaganistas\\LaravelPhone\\Casts\\RawPhoneNumberCast' => __DIR__ . '/..' . '/propaganistas/laravel-phone/src/Casts/RawPhoneNumberCast.php',
+        'Propaganistas\\LaravelPhone\\Concerns\\PhoneNumberCountry' => __DIR__ . '/..' . '/propaganistas/laravel-phone/src/Concerns/PhoneNumberCountry.php',
+        'Propaganistas\\LaravelPhone\\Concerns\\PhoneNumberFormat' => __DIR__ . '/..' . '/propaganistas/laravel-phone/src/Concerns/PhoneNumberFormat.php',
+        'Propaganistas\\LaravelPhone\\Concerns\\PhoneNumberType' => __DIR__ . '/..' . '/propaganistas/laravel-phone/src/Concerns/PhoneNumberType.php',
+        'Propaganistas\\LaravelPhone\\Exceptions\\CountryCodeException' => __DIR__ . '/..' . '/propaganistas/laravel-phone/src/Exceptions/CountryCodeException.php',
+        'Propaganistas\\LaravelPhone\\Exceptions\\IncompatibleTypesException' => __DIR__ . '/..' . '/propaganistas/laravel-phone/src/Exceptions/IncompatibleTypesException.php',
+        'Propaganistas\\LaravelPhone\\Exceptions\\NumberFormatException' => __DIR__ . '/..' . '/propaganistas/laravel-phone/src/Exceptions/NumberFormatException.php',
+        'Propaganistas\\LaravelPhone\\Exceptions\\NumberParseException' => __DIR__ . '/..' . '/propaganistas/laravel-phone/src/Exceptions/NumberParseException.php',
+        'Propaganistas\\LaravelPhone\\PhoneNumber' => __DIR__ . '/..' . '/propaganistas/laravel-phone/src/PhoneNumber.php',
+        'Propaganistas\\LaravelPhone\\PhoneServiceProvider' => __DIR__ . '/..' . '/propaganistas/laravel-phone/src/PhoneServiceProvider.php',
+        'Propaganistas\\LaravelPhone\\Rules\\Phone' => __DIR__ . '/..' . '/propaganistas/laravel-phone/src/Rules/Phone.php',
         'Psr\\Clock\\ClockInterface' => __DIR__ . '/..' . '/psr/clock/src/ClockInterface.php',
         'Psr\\Container\\ContainerExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerExceptionInterface.php',
         'Psr\\Container\\ContainerInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerInterface.php',
@@ -6727,6 +6791,29 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'Whoops\\Util\\Misc' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/Misc.php',
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
+        'libphonenumber\\CountryCodeSource' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/CountryCodeSource.php',
+        'libphonenumber\\CountryCodeToRegionCodeMap' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/CountryCodeToRegionCodeMap.php',
+        'libphonenumber\\DefaultMetadataLoader' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/DefaultMetadataLoader.php',
+        'libphonenumber\\MatchType' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/MatchType.php',
+        'libphonenumber\\Matcher' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/Matcher.php',
+        'libphonenumber\\MatcherAPIInterface' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/MatcherAPIInterface.php',
+        'libphonenumber\\MetadataLoaderInterface' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/MetadataLoaderInterface.php',
+        'libphonenumber\\MetadataSourceInterface' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/MetadataSourceInterface.php',
+        'libphonenumber\\MultiFileMetadataSourceImpl' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/MultiFileMetadataSourceImpl.php',
+        'libphonenumber\\NumberFormat' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/NumberFormat.php',
+        'libphonenumber\\NumberParseException' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/NumberParseException.php',
+        'libphonenumber\\PhoneMetadata' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/PhoneMetadata.php',
+        'libphonenumber\\PhoneNumber' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/PhoneNumber.php',
+        'libphonenumber\\PhoneNumberDesc' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/PhoneNumberDesc.php',
+        'libphonenumber\\PhoneNumberFormat' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/PhoneNumberFormat.php',
+        'libphonenumber\\PhoneNumberMatch' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/PhoneNumberMatch.php',
+        'libphonenumber\\PhoneNumberType' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/PhoneNumberType.php',
+        'libphonenumber\\PhoneNumberUtil' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/PhoneNumberUtil.php',
+        'libphonenumber\\RegexBasedMatcher' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/RegexBasedMatcher.php',
+        'libphonenumber\\ShortNumberCost' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/ShortNumberCost.php',
+        'libphonenumber\\ShortNumberInfo' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/ShortNumberInfo.php',
+        'libphonenumber\\ShortNumbersRegionCodeSet' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/ShortNumbersRegionCodeSet.php',
+        'libphonenumber\\ValidationResult' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php-lite/src/ValidationResult.php',
         'voku\\helper\\ASCII' => __DIR__ . '/..' . '/voku/portable-ascii/src/voku/helper/ASCII.php',
     );
 

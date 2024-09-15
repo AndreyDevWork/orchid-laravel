@@ -16,7 +16,7 @@ class ClientListTable extends Table
      *
      * @var string
      */
-    protected $target = '';
+    protected $target = 'clients';
 
     /**
      * Get the table cells to be displayed.
@@ -28,13 +28,15 @@ class ClientListTable extends Table
         return [
             TD::make('phone', 'Телефон')
                 ->width(150)
-                ->cantHide(),
+                ->cantHide()
+                ->filter(TD::FILTER_TEXT),
             TD::make('status', 'Статус')
                 ->render(function (Client $client) {
                     return $client->status === 'interviewed' ? 'Опрошен' : 'Не опрошен';
                 })
                 ->width(150)
-                ->popover('Статус по результатам работы оператора'),
+                ->popover('Статус по результатам работы оператора')
+                ->sort(),
             TD::make('email', 'Почта'),
             TD::make('assessment', 'Оценка')
                 ->width(150)
