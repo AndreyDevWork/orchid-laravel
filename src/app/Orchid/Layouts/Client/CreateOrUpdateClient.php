@@ -3,6 +3,7 @@
 namespace App\Orchid\Layouts\Client;
 
 use App\Models\Service;
+use App\Orchid\Fields\CustomField;
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Group;
@@ -44,7 +45,8 @@ class CreateOrUpdateClient extends Rows
                 'Хорошо' => 'Хорошо',
                 'Удовлетворительно' => 'Удовлетворительно',
                 'Плохой' => 'Плохой'
-            ])->help('Реакция на оказанную услугу')->empty('Не известно', 'Не известно')
+            ])->help('Реакция на оказанную услугу')->empty('Не известно', 'Не известно'),
+            CustomField::make()->count(999)->title('hello custom field i am title')
         ];
     }
 }
