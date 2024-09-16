@@ -39,6 +39,14 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route("platform.clients")
                 ->permission('platform.clients'),
 
+            Menu::make("Аналитика и отчеты")
+                ->icon('chart')
+                ->route('platform.analyticsAndReports')
+                ->canSee(
+                    \Auth::user()->hasAccess('platform.analytics') &&
+                    \Auth::user()->hasAccess('platform.reports')
+                ),
+
             Menu::make(__('Roles'))
                 ->icon('lock')
                 ->route('platform.systems.roles')
