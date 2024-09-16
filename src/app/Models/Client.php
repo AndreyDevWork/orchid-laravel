@@ -35,6 +35,16 @@ class Client extends Model
     ];
 
     /**
+     * @return array
+     */
+    protected function casts(): array
+    {
+        return [
+            'id' => 'int'
+        ];
+    }
+
+    /**
      * @return BelongsTo
      */
     public function service(): BelongsTo
