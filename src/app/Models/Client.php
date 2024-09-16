@@ -25,6 +25,7 @@ class Client extends Model
     protected $allowedSorts = [
         'status'
     ];
+
     protected $allowedFilters = [
         'phone' => Where::class
     ];

@@ -34,7 +34,7 @@ class ClientListTable extends Table
                 ->filter(TD::FILTER_TEXT),
             TD::make('status', 'Статус')
                 ->render(function (Client $client) {
-                    return $client->status === 'interviewed' ? 'Опрошен' : 'Не опрошен';
+                    return Client::STATUS[$client->status];
                 })
                 ->width(150)
                 ->popover('Статус по результатам работы оператора')
