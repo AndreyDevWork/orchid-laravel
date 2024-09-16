@@ -37,6 +37,19 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make("Клиенты")
                 ->icon("user")
                 ->route("platform.clients")
+                ->permission('platform.clients'),
+
+            Menu::make(__('Roles'))
+                ->icon('lock')
+                ->route('platform.systems.roles')
+                ->permission('platform.systems.roles'),
+
+            Menu::make(__('Users'))
+                ->icon('user')
+                ->route('platform.systems.users')
+                ->permission('platform.systems.users')
+                ->title(__('Access rights')),
+
         ];
     }
 
@@ -51,6 +64,11 @@ class PlatformProvider extends OrchidServiceProvider
             ItemPermission::group(__('System'))
                 ->addPermission('platform.systems.roles', __('Roles'))
                 ->addPermission('platform.systems.users', __('Users')),
+            ItemPermission::group('Отзывы клиентов')
+                ->addPermission('platform.clients', 'Клиенты')
+                ->addPermission('platform.analytics', 'Аналитика')
+                ->addPermission('platform.reports', 'Отчеты')
+
         ];
     }
 }

@@ -21,6 +21,14 @@ use Orchid\Support\Facades\Toast;
 
 class ClientListScreen extends Screen
 {
+
+    public function permission(): ?iterable
+    {
+        return [
+            'platform.clients'
+        ];
+    }
+
     /**
      * Fetch data to be displayed on the screen.
      *
