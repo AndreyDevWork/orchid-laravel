@@ -37,7 +37,7 @@ class ClientListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'clients' => Client::filters()->defaultSort('status', 'asc')->paginate(10)
+            'clients' => Client::filters()->defaultSort('id', 'desc')->paginate(10)
         ];
     }
 
@@ -96,6 +96,7 @@ class ClientListScreen extends Screen
      */
     public function asyncGetClient(Client $client): array
     {
+        $client->load('attachment');
         return [
             'client' => $client
         ];
@@ -108,12 +109,15 @@ class ClientListScreen extends Screen
     public function createOrUpdateClient(ClientRequest $request): void
     {
         $clientId = $request->input('client.id');
-        Client::updateOrCreate([
+        $client = Client::updateOrCreate([
             'id' => $clientId
         ], array_merge($request->validated()['client'], [
             'status' => 'interviewed'
         ]) );
 
+        $client->attachment()->syncWithoutDetaching(
+            $request->input('client.attachment', [])
+        );
         is_null($clientId) ? Toast::info("Клиент успешно создан") : Toast::info('Клиент успешно обновлен');
     }
 }

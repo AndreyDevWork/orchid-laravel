@@ -10,6 +10,7 @@ use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Fields\Select;
+use Orchid\Screen\Fields\Upload;
 use Orchid\Screen\Layouts\Rows;
 
 class CreateOrUpdateClient extends Rows
@@ -46,7 +47,8 @@ class CreateOrUpdateClient extends Rows
                 'Удовлетворительно' => 'Удовлетворительно',
                 'Плохой' => 'Плохой'
             ])->help('Реакция на оказанную услугу')->empty('Не известно', 'Не известно'),
-            CustomField::make()->count(999)->title('hello custom field i am title')
+            CustomField::make()->count(999)->title('hello custom field i am title'),
+            Upload::make('client.attachment')->title('Загрузить накладную')
         ];
     }
 }
