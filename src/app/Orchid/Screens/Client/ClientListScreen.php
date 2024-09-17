@@ -5,9 +5,11 @@ namespace App\Orchid\Screens\Client;
 use App\Http\Requests\ClientRequest;
 use App\Models\Client;
 use App\Models\Service;
+use App\Orchid\Filters\StatusFilter;
 use App\Orchid\Layouts\Client\ClientListTable;
 
 use App\Orchid\Layouts\Client\CreateOrUpdateClient;
+use App\Orchid\Layouts\OperatorSelection;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\DateTimer;
@@ -37,7 +39,7 @@ class ClientListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'clients' => Client::filters()->defaultSort('id', 'desc')->paginate(10)
+            'clients' => Client::filtersApplySelection(OperatorSelection::class)->filters()->defaultSort('id', 'desc')->paginate(10)
         ];
     }
 
@@ -81,6 +83,7 @@ class ClientListScreen extends Screen
     public function layout(): iterable
     {
         return [
+            OperatorSelection::class,
             ClientListTable::class,
             Layout::modal('createClient', CreateOrUpdateClient::class)
                 ->title('Создать клиента')
